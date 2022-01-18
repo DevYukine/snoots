@@ -68,6 +68,9 @@ export interface TextPostOptions {
 
   /** Whether or not this post is a spoiler (defaults to `false`). */
   spoiler?: boolean;
+
+  /** Flair Id of this Post */
+  flairId?: string;
 }
 
 /** Extra options for submitting a link post. */
@@ -92,6 +95,7 @@ interface PostOpts {
   spoiler: boolean;
   // This only applies to link and cross posts
   resubmit: boolean;
+  flairId?: string;
 }
 
 /**
@@ -573,6 +577,7 @@ export default class SubredditControls extends BaseControls {
       captcha: opts.captcha,
       nsfw: opts.nsfw ?? false,
       spoiler: opts.spoiler ?? false,
+      flairId: opts.flairId,
     });
   }
 
@@ -601,6 +606,7 @@ export default class SubredditControls extends BaseControls {
       captcha: opts.captcha,
       nsfw: opts.nsfw ?? false,
       spoiler: opts.spoiler ?? false,
+      flairId: opts.flairId,
     });
   }
 
@@ -642,6 +648,7 @@ export default class SubredditControls extends BaseControls {
       resubmit: opts.resubmit,
       nsfw: opts.nsfw,
       spoiler: opts.spoiler,
+      flair_id: opts.flairId,
     };
 
     if (opts.text != null) req.text = opts.text;
