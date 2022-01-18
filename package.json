@@ -7,11 +7,12 @@
   "types": "./types/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "prepare": "is-ci || husky install",
+    "prepare": "is-ci || husky install && npm run build",
     "build": "tsc",
     "test": "jest",
     "clean": "del-cli dist docs types",
     "lint": "prettier -c '**/*'",
+    "lintClean": "prettier --write .",
     "gendoc": "typedoc src/index.ts",
     "prepublishOnly": "npm run clean && npm run lint && npm run build"
   },
